@@ -1,0 +1,12 @@
+/*
+Group By, Order By
+*/
+
+--The GROUP BY statement is often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns.
+SELECT Gender, COUNT(Gender) AS GenderCount FROM EmployeeDemographics
+GROUP BY Gender
+
+--The ORDER BY keyword is used to sort the result-set in ascending ASC or descending DESC order.
+SELECT Gender, COUNT(Gender) AS GenderCount FROM EmployeeDemographics
+GROUP BY Gender
+ORDER BY Gender DESC
