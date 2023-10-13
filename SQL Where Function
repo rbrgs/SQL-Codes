@@ -1,0 +1,44 @@
+/*
+Where Statement
+=, <>, <, >, And, Or, Like, Null Not Null, In
+*/
+
+--Selects all rows that contains the exact text Jim in the FirstName column
+SELECT * FROM EmployeeDemographics
+WHERE FirstName = 'Jim'
+
+--Selects all rows where age is greater than 30 in Age column
+SELECT * FROM EmployeeDemographics
+WHERE Age > 30
+
+--Selects all rows where age is greater than or equal to 30 in Age column
+SELECT * FROM EmployeeDemographics
+WHERE Age >= 30
+
+--Selects all rows where age is lesser than 32 in Age column
+SELECT * FROM EmployeeDemographics
+WHERE Age < 32
+
+--Selects all rows where age is lesser than or equal to 32 in Age column
+SELECT * FROM EmployeeDemographics
+WHERE Age <= 32
+
+--Selects all rows where age is lesser than or equal to 32 in Age column and who are male
+SELECT * FROM EmployeeDemographics
+WHERE Age <= 32 AND Gender = 'Male'
+
+--Selects all rows where age is lesser than or equal to 32 in Age column or who are male
+SELECT * FROM EmployeeDemographics
+WHERE Age <= 32 OR Gender = 'Male'
+
+--Selects all rows where last name starts with S (wildcard can be added before, between or after the required text or letter)
+SELECT * FROM EmployeeDemographics
+WHERE LastName LIKE 'S%'
+
+--Selects all rows where last name is empty
+SELECT * FROM EmployeeDemographics
+WHERE LastName is NULL
+
+--Selects all rows similar to AND statement but this time, contains multiple requirements
+SELECT * FROM EmployeeDemographics
+WHERE FirstName IN ('Jim', 'Michael')
