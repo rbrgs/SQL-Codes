@@ -1,0 +1,38 @@
+/*
+Union, Union All
+*/
+
+--UNION removes all the duplicate values from the resultant tables. 
+--UNION does not need any additional clause to combine two tables. 
+--UNION selects all the date from both tables and put it into one output
+--JOIN retains all the values from both tables even if they're redundant. 
+--JOIN needs an additional clause ON to combine two tables based on a common field.
+--JOIN combines both table based off a common column
+
+SELECT * FROM [SQL Tutorial].dbo.EmployeeSalary
+
+SELECT * FROM [SQL Tutorial].dbo.EmployeeDemographics
+
+SELECT * FROM [SQL Tutorial].dbo.WarehouseEmployeeDemographics
+
+SELECT *
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+FULL OUTER JOIN [SQL Tutorial].dbo.WarehouseEmployeeDemographics
+ON EmployeeDemographics.EmployeeID = WarehouseEmployeeDemographics.EmployeeID
+
+SELECT * FROM [SQL Tutorial].dbo.EmployeeDemographics
+UNION
+SELECT * FROM [SQL Tutorial].dbo.WarehouseEmployeeDemographics
+
+SELECT * FROM [SQL Tutorial].dbo.EmployeeDemographics
+UNION ALL
+SELECT * FROM [SQL Tutorial].dbo.WarehouseEmployeeDemographics
+ORDER BY EmployeeID
+
+--notice how the results are. FirstName and Age are mixed up with other data.
+--Make sure when using UNION on both tables, they are at least identical
+SELECT EmployeeID, FirstName, Age
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+UNION
+SELECT EmployeeID, JobTitle, Salary
+FROM [SQL Tutorial].dbo.EmployeeSalary
