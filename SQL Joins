@@ -1,0 +1,41 @@
+/*
+Inner Joins, Full/Left/Right Outer Joins
+*/
+
+SELECT * FROM [SQL Tutorial].dbo.EmployeeSalary
+
+SELECT * FROM [SQL Tutorial].dbo.EmployeeDemographics
+
+SELECT EmployeeDemographics.EmployeeID, FirstName, LastName, JobTitle, Salary
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+INNER JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT * 
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+FULL OUTER JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT * 
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+LEFT OUTER JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT * 
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+RIGHT OUTER JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT [SQL Tutorial].dbo.EmployeeDemographics.EmployeeID, FirstName, LastName, Salary
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+Inner JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+WHERE FirstName <> 'Michael'
+ORDER BY Salary DESC
+
+SELECT JobTitle, AVG(Salary) as Average_Salary
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+Inner JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Group by JobTitle
+
