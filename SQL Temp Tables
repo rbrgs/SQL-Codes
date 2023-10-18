@@ -1,0 +1,36 @@
+/*
+SQL Temp Tables
+*/
+
+CREATE TABLE #temp_Employee (
+EmployeeID int,
+JobTitle varchar(100),
+Salary int
+)
+
+SELECT * 
+FROM #temp_Employee
+
+INSERT INTO #temp_Employee VALUES (
+'1001', 'HR', '45000')
+
+INSERT INTO #temp_Employee
+SELECT *
+FROM [SQL Tutorial].dbo.EmployeeSalary
+
+DROP TABLE IF EXISTS #temp_Employee2  -- everytime script runs, it deletes the temporary table and use it again
+CREATE TABLE #temp_Employee2 (
+JobTItle varchar(50),
+EmployeePerJob int,
+AvgAge int,
+AvgSalary int)
+
+INSERT INTO #temp_Employee2
+SELECT JobTitle, COUNT(JobTitle), AVG(Age), AVG(salary)
+FROM [SQL Tutorial].dbo.EmployeeDemographics emp
+JOIN [SQL Tutorial].dbo.EmployeeSalary sal
+ON emp.EmployeeID = sal.EmployeeID
+GROUP BY Jobtitle
+
+SELECT *
+FROM #temp_Employee2
